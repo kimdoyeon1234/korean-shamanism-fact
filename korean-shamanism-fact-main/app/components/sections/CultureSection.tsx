@@ -1,4 +1,7 @@
+"use client";
+
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { ImageWithFallback } from "../decorations/ImageWithFallback";
 import { BambooDecoration, PlumBlossomDecoration } from "../decorations/InkDecorations";
 import Image from "next/image";
@@ -6,38 +9,51 @@ import Image from "next/image";
 const shamanDance = "/shamanDance.png";
 
 export function CultureSection() {
-  const coreElements = [
+  const cautionCards = [
     {
-      title: "🌀 이야기 구조",
-      content:
-        "샤머니즘은 한국 드라마와 영화의 감정적 뼈대를 이루는 서사 구조입니다.\n영혼의 정화와 해원을 중심으로 감정적 카타르시스를 제공합니다.",
-      color: "bg-gradient-to-b from-[#2E5C8A]/5 to-white",
+      title: "종교적/문화적 맥락의 희석",
+      front:
+        "샤머니즘은 단순한 미신이나 오락이 아니라, 한국인의 정신적 근간과 세계관을 형성해 온 토착 종교 체계입니다.",
+      back:
+        "샤머니즘을 공동체의 안녕·치유가 아닌 개인의 욕망, 오컬트 공포의 도구로 사용하지 않았는지 확인하세요.",
+      color: "from-[#2E5C8A]/10 to-white",
     },
     {
-      title: "🎨 미적 코드",
-      content:
-        "굿, 탈, 신단에서 비롯된 색감과 의상, 상징은 K-컬처의 미학적 감각을 형성합니다.\n의례의 시각적 요소가 현대 콘텐츠로 이어집니다.",
-      color: "bg-gradient-to-b from-[#C8384A]/5 to-white",
+      title: "선악 이분법적 왜곡",
+      front:
+        "전통 샤머니즘은 선/악의 단순 구분보다 인간의 욕망과 영적 존재의 관계 속 복합적 긴장과 화합을 다룹니다.",
+      back:
+        "무당이 단순 ‘사리사욕’이나 ‘악행’의 인물로만 그려지지 않았는지 점검하세요.",
+      color: "from-[#C8384A]/10 to-white",
     },
     {
-      title: "💧 정서 코드 (한·정·치유)",
-      content:
-        "‘한(恨)’은 슬픔과 해원의 감정을 함께 품은 정서입니다.\n고통을 치유와 화해로 승화시키는 과정은 K-드라마의 감정 구조로 계승되었습니다.",
-      color: "bg-gradient-to-b from-gray-100 to-white",
+      title: "서구적 프레임 혼용",
+      front:
+        "서양의 엑소시즘·마녀·악마숭배와 혼동되는 묘사는 고유한 문화 정체성을 훼손합니다.",
+      back:
+        "퇴마 장면이 서양식 구마 의식에 종속되어 보조적·열등하게 그려지지 않았는지 확인하세요.",
+      color: "from-gray-100 to-white",
     },
     {
-      title: "🔄 현대적 계승",
-      content:
-        "무속은 단순한 미신이 아니라 스토리텔링과 미학적 자원으로 재해석됩니다.\n전통을 현대적으로 이어가는 문화적 창조의 원형입니다.",
-      color: "bg-gradient-to-b from-[#2E5C8A]/10 to-white",
+      title: "역사적/사회적 역할의 간과",
+      front:
+        "무속은 재난·질병 속 공동체의 심리적 안정을 돌보고, 여성 주체성의 한 축을 상징해 왔습니다.",
+      back:
+        "콘텐츠가 샤머니즘의 공동체 치유와 연대의 기능을 보여주었는지 살펴보세요.",
+      color: "from-[#2E5C8A]/10 to-white",
     },
     {
-      title: "⚠️ 주의점",
-      content:
-        "샤머니즘은 공포나 신비주의로 소비되어선 안 됩니다.\n신앙적 맥락을 존중하며, 문화적 본질을 지키는 균형 있는 콘텐츠 해석이 필요합니다.",
-      color: "bg-gradient-to-b from-[#C8384A]/10 to-white",
+      title: "굿의 자극적 소비",
+      front:
+        "굿은 음악·춤·서사가 결합된 정교한 종교 의례이자 종합 예술입니다.",
+      back:
+        "피/공포효과 등 자극만 강조해 의례의 미학·맥락을 훼손하지 않았는지 점검하세요.",
+      color: "from-[#C8384A]/10 to-white",
     },
   ];
+
+  const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
+  const flip = (i: number) => setFlippedIndex(flippedIndex === i ? null : i);
 
   return (
     <section className="min-h-screen relative py-32 px-6 overflow-hidden font-serif">
@@ -50,15 +66,6 @@ export function CultureSection() {
         />
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/75 to-white/85" />
-
-      {/* 떠 있는 무당 이미지 */}
-      <motion.div
-        className="absolute left-0 top-1/3 w-64 h-64 opacity-10"
-        animate={{ y: [0, -15, 0], rotate: [0, -3, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <Image src={shamanDance} alt="무당" fill className="object-contain" unoptimized />
-      </motion.div>
 
       {/* 장식 */}
       <PlumBlossomDecoration className="absolute right-8 top-32 w-72 h-72 opacity-12" />
@@ -84,7 +91,7 @@ export function CultureSection() {
           </div>
         </motion.div>
 
-        {/* 🔹 1. K-컬처의 근간 5가지 핵심 요소 (슬라이드형) */}
+        {/* ✅ 1️⃣ 주의 요소 (2줄 카드형) */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -93,34 +100,69 @@ export function CultureSection() {
           className="mb-32"
         >
           <h3 className="text-3xl mb-12 text-black flex items-center gap-3">
-            <span className="w-8 h-8 bg-[#2E5C8A] text-white flex items-center justify-center text-sm">
+            <span className="w-8 h-8 bg-black text-white flex items-center justify-center text-sm">
               1
             </span>
-            K-컬처의 근간 5가지 핵심 요소
+            K-컬처 이해를 위한 주의 요소
           </h3>
 
-          <div className="flex overflow-x-auto gap-8 pb-8 snap-x snap-mandatory scrollbar-hide">
-            {coreElements.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
-                className={`min-w-[280px] sm:min-w-[340px] md:min-w-[380px] rounded-2xl shadow-md ${item.color} p-8 snap-start flex flex-col justify-between border border-black/10 hover:shadow-xl transition-all`}
-              >
-                <div>
-                  <h4 className="text-2xl text-black mb-4 font-semibold">{item.title}</h4>
-                  <p className="text-black/70 leading-relaxed whitespace-pre-line">
-                    {item.content}
-                  </p>
+          {/* 👉 3x2 반응형 그리드 */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            {cautionCards.map((item, i) => {
+              const isFlipped = flippedIndex === i;
+              return (
+                <div
+                  key={i}
+                  onClick={() => flip(i)}
+                  className={`relative h-[300px] rounded-2xl border border-black/10 shadow-md bg-gradient-to-b ${item.color} cursor-pointer`}
+                  style={{ perspective: "1000px" }}
+                >
+                  <motion.div
+                    animate={{ rotateY: isFlipped ? 180 : 0 }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                    className="relative w-full h-full"
+                    style={{ transformStyle: "preserve-3d" }}
+                  >
+                    {/* 앞면 */}
+                    <div
+                      className="absolute inset-0 bg-white/85 backdrop-blur-sm p-8 rounded-2xl flex flex-col justify-center text-center"
+                      style={{ backfaceVisibility: "hidden" }}
+                    >
+                      <h4 className="text-2xl font-semibold text-black mb-3">
+                        {item.title}
+                      </h4>
+                      <p className="text-black/70 leading-relaxed whitespace-pre-line">
+                        {item.front}
+                      </p>
+                      <p className="text-xs text-gray-400 mt-4">
+                        (클릭해서 분석 포인트 보기)
+                      </p>
+                    </div>
+
+                    {/* 뒷면 */}
+                    <div
+                      className="absolute inset-0 bg-black text-white rounded-2xl p-8 flex flex-col justify-center text-center"
+                      style={{
+                        transform: "rotateY(180deg)",
+                        backfaceVisibility: "hidden",
+                      }}
+                    >
+                      <h4 className="text-2xl font-semibold mb-3">
+                        분석 시 주의할 포인트
+                      </h4>
+                      <p className="text-white/90 leading-relaxed">{item.back}</p>
+                      <p className="text-xs text-gray-400 mt-4">
+                        (다시 클릭하면 원래 내용으로 돌아갑니다)
+                      </p>
+                    </div>
+                  </motion.div>
                 </div>
-              </motion.div>
-            ))}
+              );
+            })}
           </div>
         </motion.div>
 
-        {/* 🔹 2. 한(恨)의 서사 */}
+        {/* ✅ 2) 한국인의 ‘한(恨)’ 서사 — 기존 그대로 */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -164,7 +206,7 @@ export function CultureSection() {
           </div>
         </motion.div>
 
-        {/* 🔹 3. 굿의 예술성 */}
+        {/* ✅ 3) 굿, 종합 예술의 원형 — 기존 그대로 */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -181,7 +223,8 @@ export function CultureSection() {
 
           <div className="bg-gradient-to-br from-gray-50 to-white border border-black/10 p-12 rounded-xl">
             <blockquote className="text-2xl leading-loose text-black/90 mb-12 border-l-4 border-[#2E5C8A] pl-8">
-              “굿은 음악, 춤, 의상, 연희가 결합된 종합 예술이며<br />
+              “굿은 음악, 춤, 의상, 연희가 결합된 종합 예술이며
+              <br />
               오늘날 K-컬처의 미학적 원천입니다.”
             </blockquote>
 
@@ -192,10 +235,7 @@ export function CultureSection() {
                 { icon: "👘", element: "의상", desc: "오방색 복식과 신성미" },
                 { icon: "🎭", element: "연희", desc: "재담, 즉흥, 극적 구성" },
               ].map((item, i) => (
-                <div
-                  key={i}
-                  className="bg-white p-6 border border-black/10 rounded-lg text-center"
-                >
+                <div key={i} className="bg-white p-6 border border-black/10 rounded-lg text-center">
                   <div className="text-4xl mb-4">{item.icon}</div>
                   <h4 className="mb-2 font-medium">{item.element}</h4>
                   <p className="text-sm text-black/70">{item.desc}</p>
@@ -205,7 +245,7 @@ export function CultureSection() {
           </div>
         </motion.div>
 
-        {/* 🔹 4. 현대적 재조명 */}
+        {/* ✅ 4) 현대적 재조명 — 기존 그대로 */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -236,15 +276,13 @@ export function CultureSection() {
                 <strong> 의례적 전문성</strong>과 <strong>신앙의 맥락</strong>을 보여주며 긍정적 인식을 확산시켰습니다.
               </p>
               <div className="pt-6 border-t border-[#2E5C8A]/20">
-                <span className="text-sm text-[#2E5C8A]">
-                  조사 결과: 무속인에 대한 긍정적 인식 30% 증가 (2024)
-                </span>
+                <span className="text-sm text-[#2E5C8A]">조사 결과: 무속인에 대한 긍정적 인식 30% 증가 (2024)</span>
               </div>
             </div>
           </div>
         </motion.div>
 
-        {/* 마무리 */}
+        {/* 마무리 메시지 */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -256,7 +294,8 @@ export function CultureSection() {
             샤머니즘은 K-컬처의 보이지 않는 근간입니다.
           </p>
           <p className="text-lg opacity-80">
-            음악, 춤, 서사, 감정 — 우리가 사랑하는 한류의 중심에는<br />
+            음악, 춤, 서사, 감정 — 우리가 사랑하는 한류의 중심에는
+            <br />
             천년의 무속 예술이 흐르고 있습니다.
           </p>
         </motion.div>

@@ -113,6 +113,30 @@ export function FactCheckSection() {
             ))}
           </div>
 
+          {/* 🔹 설문조사 섹션 */}
+          <div className="mt-20 border-t pt-10">
+            <h3 className="text-2xl font-semibold mb-6 text-center text-gray-900">
+              📋 참여자 의견을 들려주세요!
+            </h3>
+            <p className="text-center text-gray-600 mb-8">
+              퀴즈를 풀고 느낀 점이나 프로젝트에 대한 의견을 남겨주세요 💬
+            </p>
+            <div className="flex justify-center">
+              <iframe
+                src="https://docs.google.com/forms/d/e/1FAIpQLSdq-UDnwOhWb5UldJ9sVDePD_TbOFXd491xStOcI298-EguzQ/viewform?embedded=true"
+                width="640"
+                height="800"
+                frameBorder="0"
+                marginHeight={0}
+                marginWidth={0}
+                className="w-full max-w-3xl border rounded-2xl shadow-sm"
+              >
+                로드 중...
+              </iframe>
+            </div>
+          </div>
+
+          {/* 다시 풀기 버튼 */}
           <div className="flex justify-center mt-10">
             <button
               onClick={() => {
