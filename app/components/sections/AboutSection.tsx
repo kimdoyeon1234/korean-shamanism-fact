@@ -39,7 +39,7 @@ export function AboutSection() {
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/70 to-white/90" />
       
-      {/* 대나무 장식 */}
+      {/* 대나무 / 매화 장식 */}
       <BambooDecoration className="absolute left-0 top-40 w-40 h-[500px] opacity-10" />
       <PlumBlossomDecoration className="absolute right-0 bottom-40 w-72 h-72 opacity-10" />
       
@@ -55,7 +55,7 @@ export function AboutSection() {
             <div className="w-1 h-16 bg-black" />
             <div>
               <h2 className="text-5xl md:text-6xl text-black">무(巫)의 본질</h2>
-              <p className="text-xl text-black/60 mt-2">정의와 역할</p>
+              <p className="text-xl text-black mt-2">정의와 역할</p>
             </div>
           </div>
         </motion.div>
@@ -90,7 +90,7 @@ export function AboutSection() {
                     </div>
                     <span className="text-xs tracking-widest text-[#C8384A]">오해된 용어</span>
                   </div>
-                  <p className="text-2xl text-black/90">{item.wrong}</p>
+                  <p className="text-2xl text-black">{item.wrong}</p>
                 </div>
 
                 {/* 올바른 용어 */}
@@ -101,12 +101,12 @@ export function AboutSection() {
                     </div>
                     <span className="text-xs tracking-widest text-[#2E5C8A]">올바른 용어</span>
                   </div>
-                  <p className="text-2xl text-black/90">{item.right}</p>
+                  <p className="text-2xl text-black">{item.right}</p>
                 </div>
 
                 {/* 설명 */}
                 <div className="bg-white p-8 flex items-center">
-                  <p className="text-black/70 leading-relaxed">{item.explanation}</p>
+                  <p className="text-black leading-relaxed">{item.explanation}</p>
                 </div>
               </motion.div>
             ))}
@@ -126,7 +126,7 @@ export function AboutSection() {
           </h3>
 
           <div className="border-2 border-black p-12 bg-white">
-            <p className="text-2xl leading-relaxed text-black/90 mb-8">
+            <p className="text-2xl leading-relaxed text-black mb-8">
               한국 샤머니즘은 <strong>무당(샤먼)</strong>을 매개로 하여 
               <strong className="text-[#2E5C8A]"> 신령과 인간 세계를 연결</strong>하는 
               종교적·문화적 현상입니다.
@@ -137,24 +137,24 @@ export function AboutSection() {
                 <div className="w-12 h-12 border-2 border-black flex items-center justify-center mb-4 text-xl">
                   巫
                 </div>
-                <h4 className="text-xl mb-3">무(巫)</h4>
-                <p className="text-black/70">신령과 소통하는 영적 매개자</p>
+                <h4 className="text-xl mb-3 text-black">무(巫)</h4>
+                <p className="text-black">신령과 소통하는 영적 매개자</p>
               </div>
               
               <div>
                 <div className="w-12 h-12 border-2 border-black flex items-center justify-center mb-4 text-xl">
                   神
                 </div>
-                <h4 className="text-xl mb-3">신(神)</h4>
-                <p className="text-black/70">자연신, 조상신, 지역신 등 다양한 영적 존재</p>
+                <h4 className="text-xl mb-3 text-black">신(神)</h4>
+                <p className="text-black">자연신, 조상신, 지역신 등 다양한 영적 존재</p>
               </div>
               
               <div>
                 <div className="w-12 h-12 border-2 border-black flex items-center justify-center mb-4 text-xl">
                   祭
                 </div>
-                <h4 className="text-xl mb-3">제의(祭儀)</h4>
-                <p className="text-black/70">굿을 통한 의례적 실천</p>
+                <h4 className="text-xl mb-3 text-black">제의(祭儀)</h4>
+                <p className="text-black">굿을 통한 의례적 실천</p>
               </div>
             </div>
           </div>
@@ -172,7 +172,7 @@ export function AboutSection() {
           </h3>
 
           <div className="bg-gradient-to-br from-gray-50 to-white border border-black/10 p-12">
-            <blockquote className="text-3xl leading-relaxed text-black/90 mb-8 border-l-4 border-[#2E5C8A] pl-8">
+            <blockquote className="text-3xl leading-relaxed text-black mb-8 border-l-4 border-[#2E5C8A] pl-8">
               "굿의 본질은 인간의 길흉화복을 빌고<br />
               공동체의 안녕을 기원하는<br />
               <strong className="text-[#2E5C8A]">치유와 축복의 의례</strong>입니다."
@@ -180,20 +180,20 @@ export function AboutSection() {
 
             <div className="grid md:grid-cols-3 gap-6 mt-12">
               <div className="bg-white p-6 border border-black/10">
-                <h4 className="mb-3">다원성</h4>
-                <p className="text-sm text-black/70">
+                <h4 className="mb-3 text-black">다원성</h4>
+                <p className="text-sm text-black">
                   불교, 도교, 유교를 포용하며 발전한 유연한 신앙체계
                 </p>
               </div>
               <div className="bg-white p-6 border border-black/10">
-                <h4 className="mb-3">토착성</h4>
-                <p className="text-sm text-black/70">
+                <h4 className="mb-3 text-black">토착성</h4>
+                <p className="text-sm text-black">
                   한국인의 자연관과 우주관이 근간을 이루는 고유 전통
                 </p>
               </div>
               <div className="bg-white p-6 border border-black/10">
-                <h4 className="mb-3">공동체성</h4>
-                <p className="text-sm text-black/70">
+                <h4 className="mb-3 text-black">공동체성</h4>
+                <p className="text-sm text-black">
                   개인이 아닌 공동체의 치유와 화합을 추구
                 </p>
               </div>
