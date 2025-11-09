@@ -5,11 +5,12 @@ interface MainNavigationProps {
 
 export function MainNavigation({ activeTab, onTabChange }: MainNavigationProps) {
   const tabs = [
+    { id: "factcheck", label: "OX 퀴즈", highlight: true }, // ✅ 맨 앞으로 이동
     { id: "about", label: "무(巫)의 본질" },
-    { id: "factcheck", label: "OX 퀴즈", highlight: true }, 
     { id: "culture", label: "K-컬처의 근간" },
-    { id: "experts", label: "학술적 검증" },
+   { id: "experts", label: "학술적 검증" },
   ];
+
   
   return (
     <nav className="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-b border-black/10">
