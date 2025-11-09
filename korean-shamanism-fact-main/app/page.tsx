@@ -10,32 +10,34 @@ import { ExpertsSection } from "./components/sections/ExpertsSection";
 import { HanjiTexture } from "./components/HanjiTexture";
 
 export default function Home() {
+  // ✅ 인트로 이후 바로 OX 퀴즈로 시작
   const [showIntro, setShowIntro] = useState(true);
-  const [activeTab, setActiveTab] = useState("about"); // ✅ 기본 탭을 '무(巫)의 본질'로 설정
+  const [activeTab, setActiveTab] = useState("factcheck"); // ✅ 첫 탭을 OX 퀴즈로 설정
 
+  // 🔹 인트로 화면 유지 (IntroSplash 컴포넌트가 끝나면 본문 노출)
   if (showIntro) {
     return <IntroSplash onEnter={() => setShowIntro(false)} />;
   }
 
   return (
     <div className="min-h-screen bg-white relative">
-      {/* ✅ 한지 텍스처 - 조금 더 강하게 */}
+      {/* ✅ 한지 질감 배경 */}
       <div className="fixed inset-0 opacity-40 pointer-events-none z-0">
         <HanjiTexture />
       </div>
 
-      {/* ✅ 전체 배경에 은은한 수묵화 느낌 */}
+      {/* ✅ 은은한 수묵화 느낌의 그라데이션 */}
       <div className="fixed inset-0 opacity-5 pointer-events-none z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-100/50 via-transparent to-gray-100/50" />
       </div>
 
-      {/* ✅ 상단 네비게이션 */}
+      {/* ✅ 상단 네비게이션 바 */}
       <MainNavigation activeTab={activeTab} onTabChange={setActiveTab} />
 
-      {/* ✅ 메인 콘텐츠 */}
+      {/* ✅ 메인 콘텐츠 영역 */}
       <main className="relative">
         {activeTab === "about" && <AboutSection />}
-        {activeTab === "factcheck" && <FactCheckSection />}
+        {activeTab === "factcheck" && <FactCheckSection />} {/* ✅ 첫 화면에 표시 */}
         {activeTab === "culture" && <CultureSection />}
         {activeTab === "experts" && <ExpertsSection />}
       </main>
@@ -44,7 +46,7 @@ export default function Home() {
       <footer className="relative py-16 px-6 border-t border-black/10 bg-white">
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-3 gap-12 mb-12">
-            {/* 좌측: 설명 */}
+            {/* 좌측: 사이트 설명 */}
             <div>
               <h3 className="mb-4 flex items-center gap-2">
                 <div className="w-1 h-6 bg-black" />
@@ -107,7 +109,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 하단 저작권 영역 */}
+          {/* 하단 저작권 */}
           <div className="pt-8 border-t border-black/10 flex items-center justify-between">
             <p className="text-sm text-black/40">
               © 2025 Korean Shamanism Truth. 진실을 마주하다.
