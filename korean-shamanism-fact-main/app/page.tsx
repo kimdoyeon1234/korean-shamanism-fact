@@ -7,14 +7,12 @@ import { AboutSection } from "./components/sections/AboutSection";
 import { FactCheckSection } from "./components/sections/FactCheckSection";
 import { CultureSection } from "./components/sections/CultureSection";
 import { ExpertsSection } from "./components/sections/ExpertsSection";
-import { HanjiTexture } from "./components/HanjiTexture";
+import { HanjiTexture } from "@/app/components/HanjiTexture";
 
 export default function Home() {
-  // ✅ 인트로 이후 바로 OX 퀴즈로 시작
   const [showIntro, setShowIntro] = useState(true);
   const [activeTab, setActiveTab] = useState("factcheck"); // ✅ 첫 탭을 OX 퀴즈로 설정
 
-  // 🔹 인트로 화면 유지 (IntroSplash 컴포넌트가 끝나면 본문 노출)
   if (showIntro) {
     return <IntroSplash onEnter={() => setShowIntro(false)} />;
   }
@@ -62,20 +60,21 @@ export default function Home() {
             <div>
               <h4 className="mb-4">빠른 링크</h4>
               <ul className="space-y-2 text-sm text-black/70">
+                {/* ✅ OX 퀴즈를 최상단으로 이동 */}
+                <li>
+                  <button
+                    onClick={() => setActiveTab("factcheck")}
+                    className="hover:text-black text-[#C8384A]"
+                  >
+                    OX 퀴즈
+                  </button>
+                </li>
                 <li>
                   <button
                     onClick={() => setActiveTab("about")}
                     className="hover:text-black"
                   >
                     무(巫)의 본질
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => setActiveTab("factcheck")}
-                    className="hover:text-black text-[#C8384A]"
-                  >
-                    OX 퀴즈 {/* ✅ 이름 변경 */}
                   </button>
                 </li>
                 <li>
