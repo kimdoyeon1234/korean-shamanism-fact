@@ -6,26 +6,26 @@ const quizData = [
   {
     id: 1,
     question:
-      "넷플릭스 드라마 <킹덤>에서 사람을 되살리는 ‘생사초’는 동양의 강시 전설과 무관하며, 서양의 바이러스 설정일 뿐이다?",
+      "넷플릭스 드라마 <킹덤>에서 사람을 되살리는 ‘생사초’는 동양의 강시 전설과 무관하며, 서양의 바이러스 설정일 뿐이다? In the Netflix drama Kingdom, the 'salsacho' that brings people back to life has nothing to do with the lullies of the East, it's just a virus setup in the West?",
     answer: "X",
     explanation:
-      "‘생사초’를 통한 부활은 단순한 서양적 설정이 아니라, 한국적 ‘부활초’ 전설과 샤머니즘의 생명관이 결합된 주술적 상징입니다.",
+      "‘생사초’를 통한 부활은 단순한 서양적 설정이 아니라, 한국적 ‘부활초’ 전설과 샤머니즘의 생명관이 결합된 주술적 상징입니다.Resurrection through 'sasacho' is not just a Western setting, but a magical symbol that combines the Korean 'resurrection candle' legend and shamanism's view of life.",
   },
   {
     id: 2,
     question:
-      "드라마 <도깨비>의 ‘삼신할매’는 불교나 도교의 신화 속 존재이며, 한국 무속신앙과는 관련이 없다?",
+      "드라마 <도깨비>의 ‘삼신할매’는 불교나 도교의 신화 속 존재이며, 한국 무속신앙과는 관련이 없다? Is the 'Samshin Grandmother' in the drama 'Goblin' a myth of Buddhism or Taoism and not related to Korean shamanism?",
     answer: "X",
     explanation:
-      "‘삼신할매’는 한국 토속 신앙의 대표적 신격으로, 인간의 출생과 운명을 관장합니다. 드라마 속 인물은 이를 현대적으로 재해석한 사례입니다.",
+      "‘삼신할매’는 한국 토속 신앙의 대표적 신격으로, 인간의 출생과 운명을 관장합니다. 드라마 속 인물은 이를 현대적으로 재해석한 사례입니다. Samshin Grandma is a representative deity of Korean traditional faith and is in charge of human birth and fate. The character in the drama is a modern reinterpretation of this.",
   },
   {
     id: 3,
     question:
-      "영화 <파묘>에서 무당이 관을 꺼내기 전 지내는 굿은 악귀를 쫓는 단순한 퇴마 의식일 뿐, 땅의 신에게 기원을 푸는 의식은 아니다?",
+      "영화 <파묘>에서 무당이 관을 꺼내기 전 지내는 굿은 악귀를 쫓는 단순한 퇴마 의식일 뿐, 땅의 신에게 기원을 푸는 의식은 아니다? In the movie 'Pamyo', the gut performed by a shaman before taking out the coffin is a simple exorcism ritual to pursue evil spirits, not a ritual to release the origin to the earth's god?",
     answer: "O",
     explanation:
-      "‘파묘’ 속 굿은 악귀를 쫓는 행위가 아니라, 땅의 신에게 허락을 구하며 영혼의 안식을 비는 전통 의례입니다. 샤머니즘의 화해와 공존의 정신을 상징합니다.",
+      "‘파묘’ 속 굿은 악귀를 쫓는 행위가 아니라, 땅의 신에게 허락을 구하며 영혼의 안식을 비는 전통 의례입니다. 샤머니즘의 화해와 공존의 정신을 상징합니다. Gut in 'Pamyo' is not an act of chasing evil spirits, but a traditional ritual of asking permission from the earthly god and praying for rest of the soul. It symbolizes the spirit of reconciliation and coexistence of shamanism.",
   },
 ];
 
