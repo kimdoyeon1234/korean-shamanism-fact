@@ -13,10 +13,13 @@ export function ExpertsSection() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-5xl md:text-6xl text-black mb-4">학술적 검증</h2>
-          <p className="text-lg text-black/60">
+
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-4">
+            학술적 검증
+          </h2>
+          <p className="text-lg md:text-xl text-black/60">
             학자·목회자·평론가가 말하는 샤머니즘의 진실 — 신앙, 문화, 인식의 교차점
           </p>
         </motion.div>

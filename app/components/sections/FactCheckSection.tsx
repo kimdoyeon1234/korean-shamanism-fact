@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle, XCircle } from "lucide-react";
@@ -44,82 +46,97 @@ export function FactCheckSection() {
   };
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center bg-[#f8f9fa] px-6 pt-32 pb-20 font-serif">
-      {/* 제목 */}
+    <section className="min-h-screen flex flex-col items-center justify-center bg-[#f8f9fa] px-6 pt-32 pb-20">
+      {/* 상단 제목 / 부제 (폰트 스타일 유지, 이모지만 제거) */}
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         className="text-5xl md:text-6xl font-bold text-gray-900 mb-8 text-center"
       >
-        🧿 K-샤머니즘 능력고사
+        K-샤머니즘 능력고사
       </motion.h1>
 
       <p className="text-gray-600 text-lg mb-16 text-center leading-relaxed">
         드라마와 영화 속 샤머니즘의 진짜 의미를 알아보세요.
       </p>
 
-      {/* ✅ 결과 보기 */}
+      {/* ✅ 결과 요약 화면 */}
       {showAll ? (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7 }}
-          className="max-w-5xl w-full bg-white rounded-3xl shadow-lg p-10"
+          className="max-w-5xl w-full bg-white rounded-3xl shadow-xl border border-gray-100 p-10"
         >
-          <h2 className="text-2xl font-semibold mb-8 text-center text-gray-900">
-            ✅ 모든 정답 요약
+          <h2 className="text-2xl font-semibold mb-4 text-center text-gray-900">
+            문항별 정답 보기
           </h2>
 
-          <div className="text-center mb-8 text-lg">
+          <div className="text-center mb-10 text-lg">
             당신의 점수는{" "}
-            <span className="font-bold text-[#2E5C8A]">
+            <span className="font-bold text-[#166534]">
               {correctCount} / {quizData.length}
             </span>{" "}
-            입니다 🎉
+            입니다.
+            <p className="text-sm text-gray-500 mt-2">
+              각 문항의 정답과 해설을 한 번 더 확인해 보세요.
+            </p>
           </div>
 
-          <div className="space-y-6">
-            {quizData.map((item, i) => (
-              <div
-                key={i}
-                className="border border-gray-200 rounded-xl p-6 hover:shadow-sm transition bg-gray-50"
-              >
-                <h3 className="font-semibold text-gray-800 mb-3">
-                  Q{i + 1}. {item.question}
-                </h3>
-                <p className="text-gray-700 text-sm mb-2">
-                  <strong>정답:</strong>{" "}
+          {/* 정답 카드 리스트 - 리디자인 영역 */}
+          <div className="space-y-8">
+            {quizData.map((item, i) => {
+              const isCorrect = answers[item.id] === item.answer;
+
+              return (
+                <div
+                  key={i}
+                  className="relative rounded-2xl border bg-[#f6fef9] border-[#d9f2e4] p-6 shadow-sm"
+                >
+                  {/* 우측 상단 배지 */}
                   <span
-                    className={`font-bold ${
-                      item.answer === "O" ? "text-blue-600" : "text-red-600"
+                    className={`absolute top-4 right-4 text-sm font-medium px-3 py-1 rounded-full ${
+                      isCorrect
+                        ? "bg-[#e6f9ee] text-[#166534]"
+                        : "bg-[#fdeaea] text-[#b91c1c]"
                     }`}
                   >
-                    {item.answer}
+                    {isCorrect ? "정답" : "오답"}
                   </span>
-                  {answers[item.id] === item.answer ? (
-                    <span className="ml-2 text-green-600 font-medium">
-                      (맞음)
+
+                  {/* 질문 */}
+                  <h3 className="font-semibold text-gray-900 text-lg mb-3 pr-20">
+                    Q{i + 1}. {item.question}
+                  </h3>
+
+                  {/* 정답 표시 */}
+                  <p className="text-gray-800 text-sm mb-2">
+                    <strong>정답: </strong>
+                    <span
+                      className={`font-bold ${
+                        item.answer === "O" ? "text-blue-700" : "text-red-600"
+                      }`}
+                    >
+                      {item.answer}
                     </span>
-                  ) : (
-                    <span className="ml-2 text-red-500 font-medium">
-                      (틀림)
-                    </span>
-                  )}
-                </p>
-                <p className="text-gray-700 text-sm leading-relaxed">
-                  {item.explanation}
-                </p>
-              </div>
-            ))}
+                  </p>
+
+                  {/* 해설 */}
+                  <p className="text-gray-700 text-sm leading-relaxed py-2">
+                    {item.explanation}
+                  </p>
+                </div>
+              );
+            })}
           </div>
 
-          {/* 🔹 설문조사 섹션 */}
-          <div className="mt-20 border-t pt-10">
-            <h3 className="text-2xl font-semibold mb-6 text-center text-gray-900">
-              📋 참여자 의견을 들려주세요!
+          {/* 설문 폼 영역 */}
+          <div className="mt-16 border-top border-gray-200 pt-10">
+            <h3 className="text-xl font-semibold mb-4 text-center text-gray-900">
+              참여 소감과 의견을 들려주세요
             </h3>
-            <p className="text-center text-gray-600 mb-8">
-              퀴즈를 풀고 느낀 점이나 프로젝트에 대한 의견을 남겨주세요 💬
+            <p className="text-center text-gray-600 mb-8 text-sm">
+              퀴즈를 풀고 느낀 점, 샤머니즘에 대한 인식 변화를 자유롭게 남겨주세요.
             </p>
             <div className="flex justify-center">
               <iframe
@@ -129,7 +146,7 @@ export function FactCheckSection() {
                 frameBorder="0"
                 marginHeight={0}
                 marginWidth={0}
-                className="w-full max-w-3xl border rounded-2xl shadow-sm"
+                className="w-full max-w-3xl border rounded-2xl shadow-sm bg-white"
               >
                 로드 중...
               </iframe>
@@ -144,15 +161,15 @@ export function FactCheckSection() {
                 setIndex(0);
                 setAnswers({});
               }}
-              className="px-6 py-3 rounded-xl bg-blue-500 text-white font-semibold hover:bg-blue-600 transition-all"
+              className="px-6 py-3 rounded-xl bg-gray-900 text-white font-semibold hover:bg-black transition-all"
             >
-              ↩ 다시 풀기
+              다시 풀기
             </button>
           </div>
         </motion.div>
       ) : (
         <>
-          {/* 문제 슬라이드 */}
+          {/* 문제 슬라이드 화면 */}
           <div className="relative w-full max-w-3xl overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
@@ -161,7 +178,7 @@ export function FactCheckSection() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -150 }}
                 transition={{ duration: 0.7 }}
-                className="bg-white rounded-3xl shadow-lg p-10 text-center border border-gray-200"
+                className="bg-white rounded-3xl shadow-xl p-10 text-center border border-gray-100"
               >
                 <h2 className="text-xl font-semibold text-gray-900 mb-6 leading-relaxed">
                   Q{index + 1}. {current.question}
@@ -214,11 +231,13 @@ export function FactCheckSection() {
                     transition={{ delay: 0.3 }}
                     className="text-gray-700 text-base leading-relaxed border-t border-gray-200 pt-4"
                   >
-                    ✅ 정답:{" "}
+                    <span className="text-sm font-medium text-gray-500">
+                      정답:&nbsp;
+                    </span>
                     <span
                       className={`font-bold ${
                         current.answer === "O"
-                          ? "text-blue-600"
+                          ? "text-blue-700"
                           : "text-red-600"
                       }`}
                     >
@@ -254,10 +273,10 @@ export function FactCheckSection() {
                 if (index + 1 === quizData.length) setShowAll(true);
                 else setIndex((prev) => (prev + 1) % quizData.length);
               }}
-              disabled={!answers[current.id]} // ✅ 정답 선택 전 이동 불가
+              disabled={!answers[current.id]}
               className={`px-6 py-3 rounded-xl font-semibold transition-all ${
                 answers[current.id]
-                  ? "bg-blue-500 text-white hover:bg-blue-600"
+                  ? "bg-gray-900 text-white hover:bg-black"
                   : "bg-gray-300 text-gray-500 cursor-not-allowed"
               }`}
             >
