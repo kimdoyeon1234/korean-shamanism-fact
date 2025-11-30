@@ -5,9 +5,9 @@ interface MainNavigationProps {
 
 export function MainNavigation({ activeTab, onTabChange }: MainNavigationProps) {
   const tabs = [
-    { id: "home", label: "신성한 경계" }, // ✅ 맨 앞으로 이동
+    { id: "home", label: "신성한 경계" }, 
     { id: "about", label: "무(巫)의 본질" },
-    { id: "factcheck", label: "OX 퀴즈", highlight: true },
+    { id: "factcheck", label: "OX 퀴즈", highlight: false },
     { id: "culture", label: "K-컬처의 근간" },
    { id: "experts", label: "학술적 검증" },
   ];

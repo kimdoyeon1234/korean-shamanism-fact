@@ -40,76 +40,79 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.5 }} // IntroSplash의 exit 애니메이션(1초) 후에 등장하도록 딜레이 조정 가능
         >
           {/* 한지 텍스처 - 조금 더 강하게 */}
-      <div className="fixed inset-0 opacity-40 pointer-events-none z-0">
-        <HanjiTexture />
-      </div>
+          <div className="fixed inset-0 opacity-40 pointer-events-none z-0">
+            <HanjiTexture />
+          </div>
 
           {/* 전체 배경에 은은한 수묵화 느낌 */}
-      <div className="fixed inset-0 opacity-5 pointer-events-none z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-100/50 via-transparent to-gray-100/50" />
-      </div>
+          <div className="fixed inset-0 opacity-5 pointer-events-none z-0">
+            <div className="absolute inset-0 bg-gradient-to-b from-gray-100/50 via-transparent to-gray-100/50" />
+          </div>
 
           {/* 상단 네비게이션 */}
-      <MainNavigation activeTab={activeTab} onTabChange={setActiveTab} />
+          <MainNavigation activeTab={activeTab} onTabChange={setActiveTab} />
 
           {/* 메인 콘텐츠 */}
-      <main className="relative">
-            {activeTab === "home" && <HomeSection onTabChange={function (tab: string): void {
-              throw new Error("Function not implemented.");
-            } } />}
-        {activeTab === "about" && <AboutSection />}
+          <main className="relative">
+            {/* ✨ 여기가 수정된 부분이야! 에러 던지는 코드 삭제하고 setActiveTab 연결 완료 ✨ */}
+            {activeTab === "home" && <HomeSection onTabChange={setActiveTab} />}
+            
+            {activeTab === "about" && <AboutSection />}
             {activeTab === "factcheck" && <FactCheckSection />}
-        {activeTab === "culture" && <CultureSection />}
-        {activeTab === "experts" && <ExpertsSection />}
-      </main>
+            {activeTab === "culture" && <CultureSection />}
+            {activeTab === "experts" && <ExpertsSection />}
+          </main>
 
           {/* Footer */}
-      <footer className="relative py-16 px-6 border-t border-black/10 bg-white">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-3 gap-12 mb-12">
-            <div>
-              <h3 className="mb-4 flex items-center gap-2">
-                <div className="w-1 h-6 bg-black" />
-                <span className="text-xl">한국 샤머니즘</span>
-              </h3>
-              <p className="text-black/60 text-sm leading-relaxed">
-                미디어 속 오해를 바로잡고,<br />
-                한국 전통 무속신앙의 진실된 가치를 전합니다.
-              </p>
-            </div>
+          <footer className="relative py-16 px-6 border-t border-black/10 bg-white">
+            <div className="container mx-auto max-w-6xl">
+              <div className="grid md:grid-cols-3 gap-12 mb-12">
+                <div>
+                  <h3 className="mb-4 flex items-center gap-2">
+                    <div className="w-1 h-6 bg-black" />
+                    {/* 수정됨: text-black font-bold 추가 */}
+                    <span className="text-xl text-black font-bold">한국 샤머니즘</span>
+                  </h3>
+                  <p className="text-black/60 text-sm leading-relaxed">
+                    미디어 속 오해를 바로잡고,<br />
+                    한국 전통 무속신앙의 진실된 가치를 전합니다.
+                  </p>
+                </div>
 
-            <div>
-              <h4 className="mb-4">빠른 링크</h4>
-              <ul className="space-y-2 text-sm text-black/70">
+                <div>
+                  {/* 수정됨: text-black font-bold 추가 */}
+                  <h4 className="mb-4 text-black font-bold">빠른 링크</h4>
+                  <ul className="space-y-2 text-sm text-black/70">
                     <li><button onClick={() => setActiveTab("about")} className="hover:text-black">무(巫)의 본질</button></li>
-                    <li><button onClick={() => setActiveTab("factcheck")} className="hover:text-black text-[#C8384A]">Fact Check</button></li>
+                    <li><button onClick={() => setActiveTab("factcheck")} className="hover:text-black text-[#C8384A]">ox퀴즈</button></li>
                     <li><button onClick={() => setActiveTab("culture")} className="hover:text-black">K-컬처의 근간</button></li>
                     <li><button onClick={() => setActiveTab("experts")} className="hover:text-black">학술적 검증</button></li>
-              </ul>
-            </div>
+                  </ul>
+                </div>
 
-            <div>
-              <h4 className="mb-4">참고 기관</h4>
-              <ul className="space-y-2 text-sm text-black/70">
-                <li>국립민속박물관</li>
-                <li>한국콘텐츠진흥원</li>
-                <li>문화재청</li>
-                <li>한국학중앙연구원</li>
-              </ul>
-            </div>
-          </div>
+                <div>
+                  {/* 수정됨: text-black font-bold 추가 */}
+                  <h4 className="mb-4 text-black font-bold">참고 기관</h4>
+                  <ul className="space-y-2 text-sm text-black/70">
+                    <li>국립민속박물관</li>
+                    <li>한국콘텐츠진흥원</li>
+                    <li>문화재청</li>
+                    <li>한국학중앙연구원</li>
+                  </ul>
+                </div>
+              </div>
 
-          <div className="pt-8 border-t border-black/10 flex items-center justify-between">
-            <p className="text-sm text-black/40">
-              © 2025 Korean Shamanism Truth. 진실을 마주하다.
-            </p>
-            <div className="flex items-center gap-3">
-              <div className="w-3 h-3 bg-[#C8384A]" title="오해" />
-              <div className="w-3 h-3 bg-[#2E5C8A]" title="진실" />
+              <div className="pt-8 border-t border-black/10 flex items-center justify-between">
+                <p className="text-sm text-black/40">
+                  © 2025 Korean Shamanism Truth. 진실을 마주하다.
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 bg-[#C8384A]" title="오해" />
+                  <div className="w-3 h-3 bg-[#2E5C8A]" title="진실" />
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </footer>
+          </footer>
         </motion.div>
       )}
     </>
